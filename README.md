@@ -11,6 +11,14 @@ A generic, English starting point for technical design documentation of a softwa
 
 Upstream files are copied in, not rewritten. See [NOTICES.md](NOTICES.md).
 
+## Worked example
+
+Theory alone is easy to ignore. A filled-in fictional project lives in a separate repository so new projects do not inherit it:
+
+**[design-docs-example](https://github.com/alessandroros/design-docs-example)** — CityCycle, a docked bike-sharing service.
+
+Read that README in order: goals → context → strategy → containers → ADRs → an RFC that adds electric bikes → the ADR the RFC produced. Then come back here and start empty.
+
 ## Use this repository as a template
 
 On GitHub, open this repository and choose **Use this template**.
