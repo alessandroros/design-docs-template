@@ -1,75 +1,80 @@
 # Design docs template
 
-A generic, English starting point for technical design documentation of a software project. It does not invent a format. It vendors the templates teams already use, and explains when to use each one.
+Three documents, one rule: **separate what changes from what must not change.**
 
-| Question | Document | Where |
-|----------|----------|--------|
-| What is the system, and how is it shaped? | [arc42](https://arc42.org/) architecture documentation | [`docs/architecture/`](docs/architecture/) |
-| Why did we choose this, for good? | [MADR](https://adr.github.io/madr/) architecture decision record | [`docs/adr/`](docs/adr/) |
-| How should we build this change? | RFC / design doc | [`docs/rfc/`](docs/rfc/) |
-| How do the pieces fit, visually? | [C4](https://c4model.com/) diagrams in Mermaid | [`docs/architecture/diagrams/`](docs/architecture/diagrams/) |
+## The method in 30 seconds
 
-Upstream files are copied in, not rewritten. See [NOTICES.md](NOTICES.md).
+Before you write anything, ask one question: *is this still being decided, already decided, or describing what exists?*
 
-## Worked example
+| You are… | Write | When | Can it change? |
+|----------|-------|------|----------------|
+| Still convincing people | **RFC** — a proposal | Before building | Yes, while in review. Then it is history. |
+| Recording a choice | **ADR** — one decision | The moment you decide | Never. A new ADR supersedes it. |
+| Describing the system today | **arc42** — the map | Continuously | Yes, always kept current. |
 
-Theory alone is easy to ignore. A filled-in fictional project lives in a separate repository so new projects do not inherit it:
+They form a chain. Skipping the last step is how documentation rots.
 
-**[design-docs-example](https://github.com/alessandroros/design-docs-example)** — CityCycle, a docked bike-sharing service.
+```mermaid
+flowchart LR
+  work["New work"] --> q{"Is the solution<br/>obvious?"}
+  q -->|yes| ticket["Ticket"]
+  q -->|no| rfc["RFC<br/>propose and review"]
+  rfc --> adr["ADR<br/>record each decision"]
+  adr --> arc["arc42 + C4<br/>update the map"]
+  ticket --> arc
+```
 
-Read that README in order: goals → context → strategy → containers → ADRs → an RFC that adds electric bikes → the ADR the RFC produced. Then come back here and start empty.
+## Why
 
-## Use this repository as a template
+Without this split, every project hits the same three problems:
 
-On GitHub, open this repository and choose **Use this template**.
+- **Nobody remembers why.** Six months in, the reason for a choice left with the person who made it. ADRs keep the reason next to the code.
+- **The architecture doc is stale.** One big document is too expensive to keep current, so nobody does. arc42 splits it into sections, so you update only the one that changed.
+- **The same debate happens twice.** Discussions buried in chat get repeated. An RFC keeps the proposal, the alternatives, and why they lost in one place.
 
-Or from the CLI:
+## Three rules
+
+1. **Never edit an accepted ADR.** It is a record of what was true when you decided, like a commit. If the decision changes, write a new ADR and mark the old one `superseded by ADR-NNNN`.
+2. **Close the loop.** An implemented RFC is not documentation of the system. Update the arc42 section and the C4 diagram it touched, in the same change.
+3. **Skip the RFC when the answer is obvious.** If there are no trade-offs, a ticket is enough. An RFC that only says "here is how we will build it" is overhead.
+
+## See it on a real-looking project
+
+**[design-docs-example](https://github.com/alessandroros/design-docs-example)** — CityCycle, a fictional bike-sharing service. It walks the whole chain: initial architecture, two founding ADRs, an RFC that adds electric bikes, and the ADR that RFC produced. Read it once before starting your own.
+
+## Start a project
 
 ```bash
 gh repo create my-project --template alessandroros/design-docs-template --private
 ```
 
-Then, in the new project:
+Or choose **Use this template** on GitHub.
 
-1. Fill [`docs/architecture/01_introduction_and_goals.md`](docs/architecture/01_introduction_and_goals.md): business goals, the top quality goals as measurable scenarios, stakeholders.
-2. Fill context, solution strategy, and the building block view (sections 3, 4, and 5). Leave the other arc42 sections empty until you have something real to write.
-3. Replace the placeholder names in the [C4 diagrams](docs/architecture/diagrams/).
-4. Keep [`docs/adr/0000-use-markdown-architectural-decision-records.md`](docs/adr/0000-use-markdown-architectural-decision-records.md). It records that this project uses MADR. Add further decisions as `0001-…`, `0002-…`.
-5. Write an RFC only when a change is ambiguous enough to need a design review.
+On day one, fill only this. Leave the other arc42 sections empty until there is something real to write.
 
-## How the three documents work together
+1. [Section 1](docs/architecture/01_introduction_and_goals.md) — goals, and the top three quality goals as measurable scenarios
+2. [Section 3](docs/architecture/03_context_and_scope.md) and the [context diagram](docs/architecture/diagrams/c4-context.md) — who and what the system talks to
+3. [Section 4](docs/architecture/04_solution_strategy.md) — half a page on how the design meets those goals
+4. [Section 5](docs/architecture/05_building_block_view.md) and the [container diagram](docs/architecture/diagrams/c4-containers.md) — the deployable pieces
+5. The first ADRs — stack, persistence, boundaries, deploy
 
-An **RFC** is a proposal. You write it before implementing, while the design can still change. Reviewers comment, the text moves, and when the work ships the RFC is history.
-
-An **ADR** is a closed decision. One question, one file, kept next to the code. You do not edit an accepted ADR to change the decision. You add a new ADR and mark the old one `superseded by ADR-NNNN`.
-
-**arc42** is the map of the system as it is. Section 9 points at the ADRs. An accepted RFC that changes the structure should update the relevant arc42 section and the C4 diagrams. The RFC does not replace the architecture document.
+## What is inside
 
 ```text
-RFC  (proposal, mutable while in review)
-  └─ may produce one or more ADRs  (immutable decisions)
-        └─ are indexed from arc42 section 9
-              └─ arc42 sections 3 and 5 stay in sync with the C4 diagrams
+docs/
+  architecture/   arc42 9.0, one file per section, plus C4 diagrams in Mermaid
+  adr/            MADR 4.0 templates and ADR 0000 (we use MADR)
+  rfc/            RFC template, full and mini
 ```
 
-Skip the RFC when the solution is obvious and the risk is low. A ticket with acceptance criteria is enough.
+The arc42 and MADR files are the official upstream templates, copied in unchanged. Nothing here is a new format. See [NOTICES.md](NOTICES.md) for sources and licenses.
 
-## What to fill first
-
-For a new system, stop after this. Do not fill all twelve arc42 sections on day one.
-
-1. Section 1 — goals and quality scenarios
-2. Section 3 — context and scope, plus the context diagram
-3. Section 4 — solution strategy, half a page
-4. Section 5 — building blocks, plus the container diagram
-5. The first real ADRs (stack, persistence, boundaries, deploy), after `0000`
-
-Add runtime, deployment, cross-cutting concepts, quality scenarios in depth, risks, and the glossary when those topics become real.
+How each folder works: [architecture](docs/architecture/README.md) · [ADRs](docs/adr/README.md) · [RFCs](docs/rfc/README.md)
 
 ## Further reading
 
-- [arc42 overview](https://arc42.org/overview/) and [section docs](https://docs.arc42.org/)
+- [arc42](https://arc42.org/overview/) and its [section docs](https://docs.arc42.org/)
 - [MADR](https://adr.github.io/madr/)
 - [Documenting Architecture Decisions](https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions), Michael Nygard
 - [The C4 model](https://c4model.com/)
-- [Design docs at Google](https://www.industrialempathy.com/posts/design-docs-at-google/), the practice this RFC shape follows
+- [Design docs at Google](https://www.industrialempathy.com/posts/design-docs-at-google/)
