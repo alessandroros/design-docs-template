@@ -1,6 +1,18 @@
-# Design docs template
-
-Three documents, one rule: **separate what changes from what must not change.**
+---
+title: Design docs template
+description: RFC, ADR, and arc42 for software design documentation.
+template: splash
+hero:
+  tagline: Three documents, one rule — separate what changes from what must not change.
+  actions:
+    - text: Read the method
+      link: "#the-method-in-30-seconds"
+      icon: right-arrow
+    - text: Use this template
+      link: https://github.com/alessandroros/design-docs-template/generate
+      icon: external
+      variant: minimal
+---
 
 ## The method in 30 seconds
 

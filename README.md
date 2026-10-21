@@ -67,7 +67,10 @@ docs/
   architecture/   arc42 9.0, one file per section, plus C4 diagrams in Mermaid
   adr/            MADR 4.0 templates and ADR 0000 (we use MADR)
   rfc/            RFC template, full and mini
+website/          Starlight site that renders docs/ for GitHub Pages
 ```
+
+`docs/` is the source. Edit and review the Markdown there. `website/` only turns it into the reading view; to preview it locally, run `npm install` and `npm run dev` inside `website/`.
 
 The arc42 and MADR files are the official upstream templates, copied in unchanged. Nothing here is a new format. See [NOTICES.md](NOTICES.md) for sources and licenses.
 
