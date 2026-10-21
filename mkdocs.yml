@@ -1,0 +1,74 @@
+site_name: Design docs template
+site_description: RFC, ADR, and arc42 templates for software design documentation.
+site_url: https://alessandroros.github.io/design-docs-template/
+repo_url: https://github.com/alessandroros/design-docs-template
+repo_name: alessandroros/design-docs-template
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.sections
+    - navigation.expand
+    - toc.follow
+    - search.suggest
+    - content.action.edit
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+hooks:
+  - hooks/show_adr_meta.py
+
+markdown_extensions:
+  - tables
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+nav:
+  - Home: index.md
+  - Architecture:
+      - How to use it: architecture/README.md
+      - 1. Introduction and goals: architecture/01_introduction_and_goals.md
+      - 2. Constraints: architecture/02_architecture_constraints.md
+      - 3. Context and scope: architecture/03_context_and_scope.md
+      - 4. Solution strategy: architecture/04_solution_strategy.md
+      - 5. Building block view: architecture/05_building_block_view.md
+      - 6. Runtime view: architecture/06_runtime_view.md
+      - 7. Deployment view: architecture/07_deployment_view.md
+      - 8. Cross-cutting concepts: architecture/08_concepts.md
+      - 9. Architecture decisions: architecture/09_architecture_decisions.md
+      - 10. Quality requirements: architecture/10_quality_requirements.md
+      - 11. Risks and technical debt: architecture/11_technical_risks.md
+      - 12. Glossary: architecture/12_glossary.md
+      - Diagrams:
+          - System context: architecture/diagrams/c4-context.md
+          - Containers: architecture/diagrams/c4-containers.md
+      - About arc42: architecture/about-arc42.md
+  - Decisions:
+      - How to use them: adr/README.md
+      - 0000. Use MADR: adr/0000-use-markdown-architectural-decision-records.md
+      - Template: adr/adr-template.md
+      - Minimal template: adr/adr-template-minimal.md
+  - RFCs:
+      - How to use them: rfc/README.md
+      - Template: rfc/0000-template.md
+
+validation:
+  omitted_files: warn
+  absolute_links: ignore

@@ -2,6 +2,8 @@
 
 Three documents, one rule: **separate what changes from what must not change.**
 
+Reading view: [alessandroros.github.io/design-docs-template](https://alessandroros.github.io/design-docs-template/).
+
 ## The method in 30 seconds
 
 Before you write anything, ask one question: *is this still being decided, already decided, or describing what exists?*

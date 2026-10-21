@@ -12,7 +12,7 @@ This folder is the [arc42](https://arc42.org/overview/) template, version 9.0, E
 | [06_runtime_view.md](06_runtime_view.md) | Important runtime scenarios | When a flow is non-obvious |
 | [07_deployment_view.md](07_deployment_view.md) | Where it runs | When deploy is decided |
 | [08_concepts.md](08_concepts.md) | Cross-cutting concepts | As they appear |
-| [09_architecture_decisions.md](09_architecture_decisions.md) | Index of decisions | Link to accepted ADRs in [`../adr/`](../adr/) |
+| [09_architecture_decisions.md](09_architecture_decisions.md) | Index of decisions | Link to accepted ADRs in [`../adr/README.md`](../adr/README.md) |
 | [10_quality_requirements.md](10_quality_requirements.md) | Quality tree and scenarios | When section 1 is not enough |
 | [11_technical_risks.md](11_technical_risks.md) | Risks and technical debt | When you know them |
 | [12_glossary.md](12_glossary.md) | Domain language | As terms stabilize |
