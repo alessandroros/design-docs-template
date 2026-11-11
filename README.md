@@ -91,9 +91,9 @@ This template ships the same skill tree for **Cursor**, **Claude Code**, **ChatG
 | Claude Code | [`.claude/skills/design-docs-template/`](.claude/skills/design-docs-template/) |
 | ChatGPT / Codex / Pi | [`.agents/skills/design-docs-template/`](.agents/skills/design-docs-template/) |
 
-Full usage notes: [skills README](.cursor/skills/design-docs-template/README.md) (identical in the other two trees).
+Full usage notes (commands **and how to install per tool**): [skills README](.cursor/skills/design-docs-template/README.md) (identical in the other two trees).
 
-In agent chat, run `/design-docs-template` or ask in plain language.
+In agent chat, run `/design-docs-template` or ask in plain language. To add the skills to another repo or only for yourself, follow the **How to add the skills (per system)** section in that README (Cursor, Claude Code, ChatGPT/Codex, Pi).
 
 | Command | What it does |
 | --- | --- |
