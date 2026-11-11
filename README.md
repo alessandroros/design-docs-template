@@ -83,7 +83,11 @@ How each folder works: [architecture](docs/architecture/README.md) · [ADRs](doc
 
 ## Agent skills
 
-This template ships the same skill tree for **Cursor**, **Claude Code**, **ChatGPT/Codex**, and **Pi**:
+**Install the skill once → run bootstrap → the docs repo scaffolds itself** (GitHub template + Starlight + these skills inside). You should not clone templates by hand just to get started.
+
+Per-tool install (one `degit` line each) and the full command list: [skills README](.cursor/skills/design-docs-template/README.md) (same file under `.claude/skills/…` and `.agents/skills/…`).
+
+This template already ships the skill for Cursor, Claude Code, ChatGPT/Codex, and Pi:
 
 | Agent | Path |
 | --- | --- |
@@ -91,20 +95,16 @@ This template ships the same skill tree for **Cursor**, **Claude Code**, **ChatG
 | Claude Code | [`.claude/skills/design-docs-template/`](.claude/skills/design-docs-template/) |
 | ChatGPT / Codex / Pi | [`.agents/skills/design-docs-template/`](.agents/skills/design-docs-template/) |
 
-Full usage notes (commands **and how to install per tool**): [skills README](.cursor/skills/design-docs-template/README.md) (identical in the other two trees).
-
-In agent chat, run `/design-docs-template` or ask in plain language. To add the skills to another repo or only for yourself, follow the **How to add the skills (per system)** section in that README (Cursor, Claude Code, ChatGPT/Codex, Pi).
-
 | Command | What it does |
 | --- | --- |
-| **bootstrap** | Create a new docs repo from this template (arc42, ADR, RFC, Starlight) and rebrand the site config. Day zero — do not rebuild the scaffolding by hand. |
-| **new-rfc** | Add the next numbered RFC from the project template and update the index. Use when a change has real trade-offs and a ticket is not enough. |
-| **new-adr** | Add the next numbered ADR (MADR, minimal by default), status `proposed`, and update the index. Use when a choice is settled and must not be rewritten later. |
-| **rfc-hygiene** | Consistency pass on a draft RFC: one canon for names, diagrams, prose, and examples; strip stale noise after many iterations. |
-| **close-loop** | Close an approved RFC: draft ADR(s), freeze/link the RFC, and a concrete arc42 + C4 update checklist in the same change. |
-| **preview** | Sync `docs/` into Starlight and start the local server; report the Local URL with the configured `base` path. |
+| **bootstrap** | Create a new docs repo from this GitHub template and rebrand site config. Skills land in the new repo automatically. |
+| **new-rfc** | Next numbered RFC + index. |
+| **new-adr** | Next numbered ADR (MADR) + index. |
+| **rfc-hygiene** | Clean a noisy draft RFC (names, diagrams, examples). |
+| **close-loop** | Approved RFC → ADR(s) + arc42/C4 checklist. |
+| **preview** | Local Starlight; URL includes `base`. |
 
-Typical path: **bootstrap** → write → **preview** while drafting → **new-rfc** while deciding → **rfc-hygiene** before review → **close-loop** when approved.
+Typical path: **bootstrap** → **preview** → write → **new-rfc** → **rfc-hygiene** → **close-loop**.
 
 ## Further reading
 
