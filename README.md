@@ -71,6 +71,8 @@ docs/
   rfc/            RFC template, full and mini
 website/          Starlight site that renders docs/ for GitHub Pages
 .cursor/skills/   Cursor agent skills for this docs workflow
+.claude/skills/   Claude Code skills (same tree)
+.agents/skills/   ChatGPT/Codex and Pi skills (same tree)
 ```
 
 `docs/` is the source. Edit and review the Markdown there. `website/` only turns it into the reading view; to preview it locally, run `npm install` and `npm run dev` inside `website/`.
@@ -81,9 +83,17 @@ How each folder works: [architecture](docs/architecture/README.md) · [ADRs](doc
 
 ## Agent skills
 
-This template ships Cursor skills under [`.cursor/skills/design-docs-template/`](.cursor/skills/design-docs-template/). Full usage notes: [skills README](.cursor/skills/design-docs-template/README.md).
+This template ships the same skill tree for **Cursor**, **Claude Code**, **ChatGPT/Codex**, and **Pi**:
 
-In Agent chat, run `/design-docs-template` or ask in plain language.
+| Agent | Path |
+| --- | --- |
+| Cursor | [`.cursor/skills/design-docs-template/`](.cursor/skills/design-docs-template/) |
+| Claude Code | [`.claude/skills/design-docs-template/`](.claude/skills/design-docs-template/) |
+| ChatGPT / Codex / Pi | [`.agents/skills/design-docs-template/`](.agents/skills/design-docs-template/) |
+
+Full usage notes: [skills README](.cursor/skills/design-docs-template/README.md) (identical in the other two trees).
+
+In agent chat, run `/design-docs-template` or ask in plain language.
 
 | Command | What it does |
 | --- | --- |
