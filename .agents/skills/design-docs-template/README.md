@@ -10,7 +10,7 @@ You only install **this skill**. Then you ask the agent to **bootstrap**: it cre
 install skill (once)  →  /design-docs-template → bootstrap  →  repo ready
 ```
 
-After that, in the new repo: `new-rfc`, `preview`, `rfc-hygiene`, `close-loop`, …
+After that, in the new repo: `new-rfc`, `preview`, `rfc-hygiene`, `close-loop`, `update-skills`, …
 
 ## Install the skill (once per agent)
 
@@ -96,6 +96,8 @@ If you work on OpenMove docs, swap the GitHub path:
 
 **bootstrap** creates the project via GitHub `--template`, so the new repo already contains all three skill paths. You should not need a second install there.
 
+Later, refresh local skill copies with **update-skills** (or `/design-docs-template` → update-skills) instead of re-running `degit` by hand.
+
 ## Commands
 
 | Command | What it does |
@@ -106,6 +108,7 @@ If you work on OpenMove docs, swap the GitHub path:
 | **rfc-hygiene** | Cleans a noisy draft RFC (names, diagrams, examples, stale prose). |
 | **close-loop** | Approved RFC → ADR(s) + arc42/C4 checklist. |
 | **preview** | Sync + local Starlight; prints URL with `base`. |
+| **update-skills** | Pulls the latest skill tree from GitHub into `.cursor` / `.claude` / `.agents`. |
 
 ## Method (one screen)
 

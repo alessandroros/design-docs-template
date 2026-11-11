@@ -103,8 +103,9 @@ This template already ships the skill for Cursor, Claude Code, ChatGPT/Codex, an
 | **rfc-hygiene** | Clean a noisy draft RFC (names, diagrams, examples). |
 | **close-loop** | Approved RFC → ADR(s) + arc42/C4 checklist. |
 | **preview** | Local Starlight; URL includes `base`. |
+| **update-skills** | Refresh `.cursor` / `.claude` / `.agents` skill copies from this GitHub template. |
 
-Typical path: **bootstrap** → **preview** → write → **new-rfc** → **rfc-hygiene** → **close-loop**.
+Typical path: **bootstrap** → **preview** → write → **new-rfc** → **rfc-hygiene** → **close-loop**. Later: **update-skills**.
 
 ## Further reading
 
