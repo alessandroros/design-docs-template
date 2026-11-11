@@ -52,6 +52,8 @@ gh repo create my-project --template alessandroros/design-docs-template --privat
 
 Or choose **Use this template** on GitHub.
 
+In [Cursor](https://cursor.com/), you can also run the **bootstrap** agent skill (see [Agent skills](#agent-skills) below).
+
 On day one, fill only this. Leave the other arc42 sections empty until there is something real to write.
 
 1. [Section 1](docs/architecture/01_introduction_and_goals.md) — goals, and the top three quality goals as measurable scenarios
@@ -68,6 +70,7 @@ docs/
   adr/            MADR 4.0 templates and ADR 0000 (we use MADR)
   rfc/            RFC template, full and mini
 website/          Starlight site that renders docs/ for GitHub Pages
+.cursor/skills/   Cursor agent skills for this docs workflow
 ```
 
 `docs/` is the source. Edit and review the Markdown there. `website/` only turns it into the reading view; to preview it locally, run `npm install` and `npm run dev` inside `website/`.
@@ -75,6 +78,22 @@ website/          Starlight site that renders docs/ for GitHub Pages
 The arc42 and MADR files are the official upstream templates, copied in unchanged. Nothing here is a new format. See [NOTICES.md](NOTICES.md) for sources and licenses.
 
 How each folder works: [architecture](docs/architecture/README.md) · [ADRs](docs/adr/README.md) · [RFCs](docs/rfc/README.md)
+
+## Agent skills
+
+This template ships Cursor skills under [`.cursor/skills/design-docs-template/`](.cursor/skills/design-docs-template/). Full usage notes: [skills README](.cursor/skills/design-docs-template/README.md).
+
+In Agent chat, run `/design-docs-template` or ask in plain language.
+
+| Command | What it does |
+| --- | --- |
+| **bootstrap** | Create a new docs repo from this template (arc42, ADR, RFC, Starlight) and rebrand the site config. Day zero — do not rebuild the scaffolding by hand. |
+| **new-rfc** | Add the next numbered RFC from the project template and update the index. Use when a change has real trade-offs and a ticket is not enough. |
+| **new-adr** | Add the next numbered ADR (MADR, minimal by default), status `proposed`, and update the index. Use when a choice is settled and must not be rewritten later. |
+| **rfc-hygiene** | Consistency pass on a draft RFC: one canon for names, diagrams, prose, and examples; strip stale noise after many iterations. |
+| **close-loop** | Close an approved RFC: draft ADR(s), freeze/link the RFC, and a concrete arc42 + C4 update checklist in the same change. |
+
+Typical path: **bootstrap** → write → **new-rfc** while deciding → **rfc-hygiene** before review → **close-loop** when approved.
 
 ## Further reading
 
