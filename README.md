@@ -92,8 +92,9 @@ In Agent chat, run `/design-docs-template` or ask in plain language.
 | **new-adr** | Add the next numbered ADR (MADR, minimal by default), status `proposed`, and update the index. Use when a choice is settled and must not be rewritten later. |
 | **rfc-hygiene** | Consistency pass on a draft RFC: one canon for names, diagrams, prose, and examples; strip stale noise after many iterations. |
 | **close-loop** | Close an approved RFC: draft ADR(s), freeze/link the RFC, and a concrete arc42 + C4 update checklist in the same change. |
+| **preview** | Sync `docs/` into Starlight and start the local server; report the Local URL with the configured `base` path. |
 
-Typical path: **bootstrap** → write → **new-rfc** while deciding → **rfc-hygiene** before review → **close-loop** when approved.
+Typical path: **bootstrap** → write → **preview** while drafting → **new-rfc** while deciding → **rfc-hygiene** before review → **close-loop** when approved.
 
 ## Further reading
 

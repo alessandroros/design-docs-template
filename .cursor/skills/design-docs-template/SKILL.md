@@ -2,15 +2,15 @@
 name: design-docs-template
 description: >-
   Router for the design-docs stack (RFC → ADR → arc42 + Starlight). Commands:
-  bootstrap, new-rfc, new-adr, rfc-hygiene, close-loop. Use when the user says
-  design-docs-template, docs-template, design-docs bootstrap, new RFC/ADR,
-  RFC hygiene, close an RFC into ADRs and arc42, or nested docs-template
-  commands.
+  bootstrap, new-rfc, new-adr, rfc-hygiene, close-loop, preview. Use when the
+  user says design-docs-template, docs-template, design-docs bootstrap, new
+  RFC/ADR, RFC hygiene, close an RFC into ADRs and arc42, preview docs on
+  localhost, or nested docs-template commands.
 ---
 
 # Design docs template
 
-Five commands under one roof. Read the matching child `SKILL.md` and follow it; do not invent a sixth path.
+Six commands under one roof. Read the matching child `SKILL.md` and follow it; do not invent a seventh path.
 
 | Command | What it does | Child |
 | --- | --- | --- |
@@ -19,12 +19,13 @@ Five commands under one roof. Read the matching child `SKILL.md` and follow it; 
 | **new-adr** | Adds the next numbered ADR from the MADR template (minimal by default), status `proposed`, and updates the ADR index. Use when a choice is settled and must not be rewritten later. | [new-adr/SKILL.md](new-adr/SKILL.md) |
 | **rfc-hygiene** | Consistency pass on a draft RFC: one canon for names, diagrams, prose, and examples; strips stale noise after many iterations. Use when the RFC still “works” but readers trip on old terms or dead options. | [rfc-hygiene/SKILL.md](rfc-hygiene/SKILL.md) |
 | **close-loop** | Closes an approved RFC into the permanent record: draft ADR(s) for the decisions it produced, freeze/point the RFC, and a concrete arc42 + C4 update checklist in the same change. Use when review is done and implementation (or the map) must catch up. | [close-loop/SKILL.md](close-loop/SKILL.md) |
+| **preview** | Syncs `docs/` into Starlight and starts the local Astro/Starlight server; reports the Local URL with the configured `base` path. Use when you want to read the docs in the browser on localhost. | [preview/SKILL.md](preview/SKILL.md) |
 
 ## Dispatch
 
-1. If the user named a command (or a clear synonym: `hygiene`, `clean RFC`, `from template`, `accept RFC`, `scaffold RFC`…), open that child and run it.
-2. Otherwise ask once which command. Defaults: **bootstrap** on empty/new docs root; **rfc-hygiene** if an RFC path is in chat; **close-loop** if they say the RFC was approved; **new-rfc** / **new-adr** if they ask to “add” one.
-3. After the child finishes, stop. Chain another command only if they ask (typical chain: `rfc-hygiene` → `close-loop`).
+1. If the user named a command (or a clear synonym: `hygiene`, `clean RFC`, `from template`, `accept RFC`, `scaffold RFC`, `localhost`, `alza i docs`…), open that child and run it.
+2. Otherwise ask once which command. Defaults: **bootstrap** on empty/new docs root; **preview** if they only want the site up; **rfc-hygiene** if an RFC path is in chat; **close-loop** if they say the RFC was approved; **new-rfc** / **new-adr** if they ask to “add” one.
+3. After the child finishes, stop. Chain another command only if they ask (typical chain: `rfc-hygiene` → `close-loop`, or edit → `preview`).
 
 ## Method (shared)
 

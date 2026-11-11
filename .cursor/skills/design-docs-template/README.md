@@ -16,8 +16,9 @@ In Cursor Agent chat, invoke the router or name a command:
 | **new-adr** | A choice is **settled** and must be recorded (MADR); accepted ADRs are never rewritten. |
 | **rfc-hygiene** | A draft RFC got **noisy** after iterations (stale names, diagrams out of sync, dead options). |
 | **close-loop** | An RFC is **approved**: draft ADR(s), freeze/link the RFC, checklist of arc42 + C4 updates in the same change. |
+| **preview** | You want the Starlight site on **localhost** (sync + `npm run dev`, URL includes `base`). |
 
-Typical path: `bootstrap` → write → `new-rfc` while deciding → `rfc-hygiene` before review → `close-loop` → `new-adr` is often created for you inside close-loop.
+Typical path: `bootstrap` → write → `preview` while drafting → `new-rfc` while deciding → `rfc-hygiene` before review → `close-loop` → `new-adr` is often created for you inside close-loop.
 
 ## Where the files are
 
